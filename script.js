@@ -102,5 +102,8 @@ addButton.addEventListener('click',function() {
 });
 
 const fetchDataList = localStorage.getItem('data');
+
+if(fetchDataList!==null){
 bookArrayList=JSON.parse(fetchDataList);
 anyRandomNAme();
+}
