@@ -90,12 +90,8 @@ removeButton.addEventListener('click', function(){
             bookArrayList.splice(indexNumber,1);
             
         }
-
         indexNumber++;
     }
-
-    console.log(getListId)
-    console.log(bookArrayList);
     list.remove();
 });
     });
