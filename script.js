@@ -6,6 +6,45 @@ const bookObject = {
     author: ''
 };
 
+const anyRandomNAme = () => {
+    bookArrayList.forEach((each,book_id) => {
+
+        const list=document.createElement('li');
+        list.className="list"
+
+        const title=document.createElement('h2');
+        title.innerHTML= each.title;
+        list.appendChild(title);
+
+        const author=document.createElement('h2');
+        author.innerHTML=each.author;
+        list.appendChild(author);
+
+        const removeButton=document.createElement('button');
+        removeButton.className="remove";
+        removeButton.id=`${book_id}`;
+        removeButton.innerHTML="Remove";
+        
+        list.appendChild(removeButton);
+
+        bookList.appendChild(list);
+       
+        removeButton.addEventListener('click', function(){
+            const getListId = this.id;
+        
+            let indexNumber=0;
+            while(indexNumber<bookArrayList.length){
+                if(indexNumber == getListId){
+                    bookArrayList.splice(indexNumber,1);
+                    localStorage.setItem('data',JSON.stringify(bookArrayList));
+                }
+                indexNumber++;
+            }
+            list.remove();
+            });
+    });
+}
+
 const heading=document.createElement('h1');
 heading.innerHTML="Awesome Books"
 section.appendChild(heading);
@@ -55,46 +94,13 @@ addButton.addEventListener('click',function() {
     newObj.author = valueOfAuthor;
 
     bookArrayList.push(newObj);
+    localStorage.setItem('data',JSON.stringify(bookArrayList));
 
     // test.textContent = JSON.stringify(newObj);
+    anyRandomNAme();
 
-    bookArrayList.forEach((each,book_id) => {
-
-        const list=document.createElement('li');
-        list.className="list"
-
-        const title=document.createElement('h2');
-        title.innerHTML= each.title;
-        list.appendChild(title);
-
-        const author=document.createElement('h2');
-        author.innerHTML=each.author;
-        list.appendChild(author);
-
-        const removeButton=document.createElement('button');
-        removeButton.className="remove";
-        removeButton.id=`${book_id}`;
-        removeButton.innerHTML="Remove";
-        
-        list.appendChild(removeButton);
-
-        bookList.appendChild(list);
-
-
-removeButton.addEventListener('click', function(){
-    const getListId = this.id;
-
-    let indexNumber=0;
-    while(indexNumber<bookArrayList.length){
-        if(indexNumber == getListId){
-            bookArrayList.splice(indexNumber,1);
-            
-        }
-        indexNumber++;
-    }
-    list.remove();
-});
-    });
 });
 
-
+const fetchDataList = localStorage.getItem('data');
+bookArrayList=JSON.parse(fetchDataList);
+anyRandomNAme();
