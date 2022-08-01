@@ -1,27 +1,22 @@
 const section=document.querySelector('.awesome');
 
-// const heading=document.createElement('h1');
-
-const test = document.querySelector('.test');
-
 const bookArrayList = [];
-
 const bookObject = {
     title: '',
     author: ''
 };
 
-
-// heading.innerHTML="Awesome Books"
-// section.appendChild(heading);
+const heading=document.createElement('h1');
+heading.innerHTML="Awesome Books"
+section.appendChild(heading);
 
 const bookList=document.createElement('ul');
 bookList.className="book-list"
 section.appendChild(bookList);
 
-// const inputDiv=document.createElement('div');
-// inputDiv.className="input-fields"
-// section.appendChild(inputDiv);
+const inputDiv=document.createElement('div');
+inputDiv.className="input-fields"
+section.appendChild(inputDiv);
 
 const bookTitle=document.createElement('input');
 bookTitle.type="text";
@@ -29,7 +24,7 @@ bookTitle.name="title";
 bookTitle.className="input title";
 bookTitle.id="title";
 bookTitle.placeholder="title";
-section.appendChild(bookTitle);
+inputDiv.appendChild(bookTitle);
 
 const bookAuthor=document.createElement('input');
 bookAuthor.type="text";
@@ -37,12 +32,12 @@ bookAuthor.id="author";
 bookAuthor.className="input author";
 bookAuthor.name="author"
 bookAuthor.placeholder="author"
-section.appendChild(bookAuthor);
+inputDiv.appendChild(bookAuthor);
 
 const addButton=document.createElement('button');
 addButton.className="input add";
 addButton.innerHTML="Add";
-section.appendChild(addButton);
+inputDiv.appendChild(addButton);
 
 addButton.addEventListener('click',function() {
 
@@ -57,6 +52,7 @@ addButton.addEventListener('click',function() {
 
     // test.textContent = JSON.stringify(newObj);
     const list=document.createElement('li');
+    list.className="list"
 
     const title=document.createElement('h2');
     title.innerHTML= newObj.title;
@@ -74,9 +70,9 @@ addButton.addEventListener('click',function() {
 
     bookList.appendChild(list);
 
-    // removeButton.addEventListener('click', function(){
-    // list.remove();
-    // });
+    removeButton.addEventListener('click', function(){
+    list.remove();
+    });
 });
 
 
