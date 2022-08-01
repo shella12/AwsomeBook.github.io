@@ -32,8 +32,8 @@ bookTitle.placeholder="title";
 section.appendChild(bookTitle);
 
 const bookAuthor=document.createElement('input');
-bookAuthor.type="text"
-bookAuthor.id="author"
+bookAuthor.type="text";
+bookAuthor.id="author";
 bookAuthor.className="input author";
 bookAuthor.name="author"
 bookAuthor.placeholder="author"
