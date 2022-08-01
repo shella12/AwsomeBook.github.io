@@ -79,19 +79,26 @@ addButton.addEventListener('click',function() {
         list.appendChild(removeButton);
 
         bookList.appendChild(list);
-    });
-});
 
 
 removeButton.addEventListener('click', function(){
     const getListId = this.id;
 
-    bookArrayList=bookArrayList.filter((each, id) => {
-        if(id !== getListId) {
-            return each;
+    let indexNumber=0;
+    while(indexNumber<bookArrayList.length){
+        if(indexNumber == getListId){
+            bookArrayList.splice(indexNumber,1);
+            
         }
-    })
+
+        indexNumber++;
+    }
 
     console.log(getListId)
-    // list.paren.remove();
+    console.log(bookArrayList);
+    list.remove();
 });
+    });
+});
+
+
