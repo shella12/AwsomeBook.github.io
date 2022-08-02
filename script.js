@@ -56,7 +56,7 @@ class Books{
 const books=new Books();
 
 const heading = document.createElement('h1');
-heading.innerHTML = 'Awesome Books';
+heading.innerHTML = 'All awesome books';
 section.appendChild(heading);
 
 const bookList = document.createElement('ul');
@@ -69,7 +69,7 @@ const anyRandomNAme = () => {
     list.className = 'list';
 
     const title = document.createElement('h2');
-    title.innerHTML = each.title;
+    title.innerHTML = `"${each.title}" by `;
     list.appendChild(title);
 
     const author = document.createElement('h2');
