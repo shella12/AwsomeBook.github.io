@@ -1,24 +1,25 @@
 const section = document.querySelector('.awesome');
 
-let bookArrayList = [];
-const bookObject = {
-  title: '',
-  author: '',
-};
-class Book{
+// let bookArrayList = [];
+// const bookObject = {
+//   title: '',
+//   author: '',
+// };
+// class Book{
 
-constructor(title=null,author=null){
-this.title=title;
-this.author=author;
+// constructor(title=null,author=null){
+// this.title=title;
+// this.author=author;
 
-}
+// }
 
-}
+// }
 class Books{
-    bookArrayList=[];
+    // bookArrayList=[];
     constructor(){
 
        this.book={};
+       this.bookArrayList=[];
 
     }
     addBook(title,author){
@@ -26,17 +27,29 @@ class Books{
      console.log(title,author);
      this.book={title,author};
      this.bookArrayList.push(this.book);
+    localStorage.setItem('data', JSON.stringify(this.bookArrayList));
      console.log(this.bookArrayList);
 
     }
-    removeBook(title){
-        console.log(title,author);
-        this.bookArrayList=this.bookArrayList.filter((each)=>{
-            if(each.title !== title){
-                return each;
-            }
-        });
-        console.log(this.bookArrayList);
+    removeBook(getListId){
+        // console.log(title,author);
+        // this.bookArrayList=this.bookArrayList.filter((each)=>{
+        //     if(each.title !== title){
+        //         return each;
+        //     }
+        // });
+        // console.log(this.bookArrayList);
+        
+    let indexNumber = 0;
+      while (indexNumber < this.bookArrayList.length) {
+        if (indexNumber.toString() === getListId) {
+          this.bookArrayList.splice(indexNumber, 1);
+          localStorage.setItem('data', JSON.stringify(this.bookArrayList));
+        }
+
+        indexNumber += 1;
+      }
+    //   list.remove();
     }
 }
 
@@ -51,7 +64,7 @@ bookList.className = 'book-list';
 section.appendChild(bookList);
 
 const anyRandomNAme = () => {
-  bookArrayList.forEach((each, bookId) => {
+  books.bookArrayList.forEach((each, bookId) => {
     const list = document.createElement('li');
     list.className = 'list';
 
@@ -74,18 +87,20 @@ const anyRandomNAme = () => {
 
     removeButton.addEventListener('click', function () {
       const getListId = this.id;
+      books.removeBook(getListId);
 
-      let indexNumber = 0;
-      while (indexNumber < bookArrayList.length) {
-        if (indexNumber.toString() === getListId) {
-          bookArrayList.splice(indexNumber, 1);
-          localStorage.setItem('data', JSON.stringify(bookArrayList));
-        }
+    //   let indexNumber = 0;
+    //   while (indexNumber < books.bookArrayList.length) {
+    //     if (indexNumber.toString() === getListId) {
+    //       books.bookArrayList.splice(indexNumber, 1);
+    //       localStorage.setItem('data', JSON.stringify(books.bookArrayList));
+    //     }
 
-        indexNumber += 1;
-      }
+    //     indexNumber += 1;
+    //   }
       list.remove();
-    });
+    }
+    );
   });
 };
 
@@ -114,17 +129,17 @@ addButton.className = 'input add';
 addButton.innerHTML = 'Add';
 inputDiv.appendChild(addButton);
 
-// addButton.addEventListener('click', () => {
-//   const allList = document.querySelectorAll('.list');
+addButton.addEventListener('click', () => {
+  const allList = document.querySelectorAll('.list');
 
-//   allList.forEach((each) => {
-//     bookList.removeChild(each);
-//   });
+  allList.forEach((each) => {
+    bookList.removeChild(each);
+  });
 
-//   const valueOfTitle = document.querySelector('.title').value;
-//   const valueOfAuthor = document.querySelector('.author').value;
+  const valueOfTitle = document.querySelector('.title').value;
+  const valueOfAuthor = document.querySelector('.author').value;
 
-// //   books.addBook(valueOfTitle,valueOfAuthor);
+  books.addBook(valueOfTitle,valueOfAuthor);
 
 //   const newObj = Object.create(bookObject);
 //   newObj.title = valueOfTitle;
@@ -134,14 +149,14 @@ inputDiv.appendChild(addButton);
 //   localStorage.setItem('data', JSON.stringify(bookArrayList));
 
 //   // test.textContent = JSON.stringify(newObj);
-//   anyRandomNAme();
-// });
+  anyRandomNAme();
+});
 
-addButton.addEventListener('click',books.addBook('title','author'));
+// addButton.addEventListener('click',books.addBook('title','author'));
 
 const fetchDataList = localStorage.getItem('data');
 
 if (fetchDataList !== null) {
-  bookArrayList = JSON.parse(fetchDataList);
+  books.bookArrayList = JSON.parse(fetchDataList);
   anyRandomNAme();
 }
