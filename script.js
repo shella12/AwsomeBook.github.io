@@ -1,3 +1,5 @@
+const { title } = require("process");
+
 const section = document.querySelector('.awesome');
 
 let bookArrayList = [];
@@ -5,6 +7,42 @@ const bookObject = {
   title: '',
   author: '',
 };
+class Book{
+
+constructor(title=null,author=null){
+this.title=title;
+this.author=author;
+
+}
+
+}
+class Books{
+    bookArrayList=[];
+    constructor(){
+
+       this.book={};
+
+    }
+    addBook(title,author){
+    
+     console.log(title,author);
+     this.book={title,author};
+     bookArrayList.push(this.book);
+     console.log(bookArrayList);
+
+    }
+    removeBook(){
+        console.log(title,author);
+        this.bookArrayList=this.bookArrayList.filter((each)=>{
+            if(each.title!==title){
+                return each;
+            }
+        });
+        console.log(bookArrayList);
+    }
+}
+
+const books=new Books();
 
 const heading = document.createElement('h1');
 heading.innerHTML = 'Awesome Books';
@@ -78,26 +116,30 @@ addButton.className = 'input add';
 addButton.innerHTML = 'Add';
 inputDiv.appendChild(addButton);
 
-addButton.addEventListener('click', () => {
-  const allList = document.querySelectorAll('.list');
+// addButton.addEventListener('click', () => {
+//   const allList = document.querySelectorAll('.list');
 
-  allList.forEach((each) => {
-    bookList.removeChild(each);
-  });
+//   allList.forEach((each) => {
+//     bookList.removeChild(each);
+//   });
 
-  const valueOfTitle = document.querySelector('.title').value;
-  const valueOfAuthor = document.querySelector('.author').value;
+//   const valueOfTitle = document.querySelector('.title').value;
+//   const valueOfAuthor = document.querySelector('.author').value;
 
-  const newObj = Object.create(bookObject);
-  newObj.title = valueOfTitle;
-  newObj.author = valueOfAuthor;
+// //   books.addBook(valueOfTitle,valueOfAuthor);
 
-  bookArrayList.push(newObj);
-  localStorage.setItem('data', JSON.stringify(bookArrayList));
+//   const newObj = Object.create(bookObject);
+//   newObj.title = valueOfTitle;
+//   newObj.author = valueOfAuthor;
 
-  // test.textContent = JSON.stringify(newObj);
-  anyRandomNAme();
-});
+//   bookArrayList.push(newObj);
+//   localStorage.setItem('data', JSON.stringify(bookArrayList));
+
+//   // test.textContent = JSON.stringify(newObj);
+//   anyRandomNAme();
+// });
+
+addButton.addEventListener('click',books.addBook('title','author'));
 
 const fetchDataList = localStorage.getItem('data');
 
