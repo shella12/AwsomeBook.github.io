@@ -60,8 +60,12 @@ heading.innerHTML = 'All awesome books';
 section.appendChild(heading);
 
 const bookList = document.createElement('ul');
+const line = document.createElement('hr');
+line.className = "underline";
+
 bookList.className = 'book-list';
 section.appendChild(bookList);
+section.appendChild(line);
 
 const anyRandomNAme = () => {
   books.bookArrayList.forEach((each, bookId) => {
@@ -69,7 +73,7 @@ const anyRandomNAme = () => {
     list.className = 'list';
 
     const title = document.createElement('h2');
-    title.innerHTML = `"${each.title}" by `;
+    title.innerHTML = `"${each.title}" by`;
     list.appendChild(title);
 
     const author = document.createElement('h2');
@@ -105,15 +109,21 @@ const anyRandomNAme = () => {
 };
 
 const inputDiv = document.createElement('div');
+const formHeading = document.createElement('h3');
+formHeading.className='form-heading';
+formHeading.textContent='Add a new book';
+
 inputDiv.className = 'input-fields';
+inputDiv.appendChild(formHeading);
 section.appendChild(inputDiv);
+
 
 const bookTitle = document.createElement('input');
 bookTitle.type = 'text';
 bookTitle.name = 'title';
 bookTitle.className = 'input title';
 bookTitle.id = 'title';
-bookTitle.placeholder = 'title';
+bookTitle.placeholder = 'Title';
 inputDiv.appendChild(bookTitle);
 
 const bookAuthor = document.createElement('input');
@@ -121,7 +131,7 @@ bookAuthor.type = 'text';
 bookAuthor.id = 'author';
 bookAuthor.className = 'input author';
 bookAuthor.name = 'author';
-bookAuthor.placeholder = 'author';
+bookAuthor.placeholder = 'Author';
 inputDiv.appendChild(bookAuthor);
 
 const addButton = document.createElement('button');
