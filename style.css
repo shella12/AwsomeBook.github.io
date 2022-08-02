@@ -1,9 +1,10 @@
-*,*::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 h1 {
   font-size: 3rem;
@@ -33,7 +34,7 @@ h1 {
   width: 15rem;
   height: 4px;
   background-color: black;
- }
+}
 
 .list {
   display: flex;
@@ -91,7 +92,7 @@ h1 {
   font-weight: bold;
 }
 
-.input.add{
+.input.add {
   width: max-content;
   align-self: flex-end;
   height: max-content;
