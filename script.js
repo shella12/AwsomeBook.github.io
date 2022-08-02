@@ -1,5 +1,3 @@
-const { title } = require("process");
-
 const section = document.querySelector('.awesome');
 
 let bookArrayList = [];
@@ -27,18 +25,18 @@ class Books{
     
      console.log(title,author);
      this.book={title,author};
-     bookArrayList.push(this.book);
-     console.log(bookArrayList);
+     this.bookArrayList.push(this.book);
+     console.log(this.bookArrayList);
 
     }
-    removeBook(){
+    removeBook(title){
         console.log(title,author);
         this.bookArrayList=this.bookArrayList.filter((each)=>{
-            if(each.title!==title){
+            if(each.title !== title){
                 return each;
             }
         });
-        console.log(bookArrayList);
+        console.log(this.bookArrayList);
     }
 }
 
