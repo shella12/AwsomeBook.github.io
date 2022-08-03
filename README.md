@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-[click here for demo](https://skyv26.github.io/awesome-book/)
+[click here for demo](https://shella12.github.io/AwsomeBook.github.io/)
 
 
 ## Getting Started
